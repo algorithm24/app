@@ -8,8 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: grafana.pod7.com
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
