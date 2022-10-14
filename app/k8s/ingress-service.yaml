@@ -9,7 +9,7 @@ metadata:
 spec:
   tls:
     - hosts:
-      - app.pod7.com
+      - localhost
       secretName: root-secret
   rules:
   - host: app.pod7.com
