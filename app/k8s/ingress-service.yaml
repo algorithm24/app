@@ -12,8 +12,7 @@ spec:
       - localhost
       secretName: root-secret
   rules:
-  - host: app.pod7.com
-    http:
+  - http:
       paths:
       - path: /create_user
         pathType: Prefix
