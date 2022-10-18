@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: create-account-service-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: create-account-service
+  template:
+    metadata:
+      labels:
+        component: create-account-service
+    spec:
+      containers:
+        - name: create-account
+          image: duyly/create
+          ports:
+            - containerPort: 4000
