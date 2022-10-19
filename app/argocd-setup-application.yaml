@@ -13,4 +13,6 @@ spec:
     repoURL: 'https://github.com/algorithm24/app.git'
     targetRevision: HEAD
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      seflHeal: true
