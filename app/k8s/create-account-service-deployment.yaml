@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: create-account
-          image: duyly/create
+          image: duyly/create:v0.0.1
           ports:
             - containerPort: 4000
