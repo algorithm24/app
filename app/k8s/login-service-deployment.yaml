@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: login
-          image: duyly/login
+          image: duyly/login:v0.0.1
           ports:
             - containerPort: 8000
