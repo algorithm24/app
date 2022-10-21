@@ -1,0 +1,7 @@
+version : "3.9"
+services:
+  login:
+    build: login_service
+    image: duyly/login:v0.0.1
+    ports:
+      - "8000:8000"
