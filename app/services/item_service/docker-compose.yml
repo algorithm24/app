@@ -2,6 +2,6 @@ version : "3.9"
 services:
   item:
     build: .
-    image: duyly/item:v0.0.3
+    image: duyly/item:v0.0.4
     ports:
       - "3000:3000"
