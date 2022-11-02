@@ -1,7 +1,0 @@
-version : "3.9"
-services:
-  create-account:
-    build: .
-    image: duyly/create:v0.0.1
-    ports:
-      - "4000:4000"

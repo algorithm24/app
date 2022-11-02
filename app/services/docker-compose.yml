@@ -1,0 +1,17 @@
+version : "3.9"
+services:
+  create-account:
+    build: create_account_service
+    image: duyly/create:v0.0.1
+    ports:
+      - "4000:4000"
+  item:
+    build: item_service
+    image: duyly/item:v0.0.4
+    ports:
+      - "3000:3000"
+  login:
+    build: login_service
+    image: duyly/login:v0.0.1
+    ports:
+      - "8000:8000"
