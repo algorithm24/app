@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.10"
       
-      - name: install flask
+      - name: Install Flask
         run: pip3 install flask
           
       - name: Run Test
