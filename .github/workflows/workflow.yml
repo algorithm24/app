@@ -27,9 +27,7 @@ jobs:
           python-version: "3.10"
           
       - name: Run Test
-        run: python3 -m unittest app/test/create_test.py
-        run: python3 -m unittest app/test/item_test.py
-        run: python3 -m unittest app/test/login_test.py
+        run: for test in $(cat app/test/test.txt); do python3 -m unittest $test; done
         
       - name: Docker Compose
         run: docker-compose -f app/services/docker-compose.yml build
