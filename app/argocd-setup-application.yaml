@@ -94,9 +94,9 @@ spec:
     helm:
       releaseName: prometheus
       parameters:
-        - name: alertmanager.PersistentVolume.enabled
+        - name: alertmanager.persistentVolume.enabled
           value: 'false'
-        - name: server.PersistentVolume.enabled
+        - name: server.persistentVolume.enabled
           value: 'false'
   syncPolicy:
     automated:
