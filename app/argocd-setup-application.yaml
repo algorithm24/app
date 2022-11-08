@@ -21,7 +21,7 @@ items:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: api
+  name: create
   namespace: argocd
 spec:
   destination:
@@ -29,7 +29,64 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: app/k8s
+    path: app/k8s/create
+    repoURL: 'https://github.com/algorithm24/app.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: item
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: app/k8s/item
+    repoURL: 'https://github.com/algorithm24/app.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: login
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: app/k8s/login
+    repoURL: 'https://github.com/algorithm24/app.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gateway
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: app/k8s/gateway
     repoURL: 'https://github.com/algorithm24/app.git'
     targetRevision: HEAD
   syncPolicy:
