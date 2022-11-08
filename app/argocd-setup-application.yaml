@@ -21,7 +21,7 @@ items:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: create
+  name: create-account-service
   namespace: argocd
 spec:
   destination:
@@ -40,7 +40,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: item
+  name: item-service
   namespace: argocd
 spec:
   destination:
@@ -59,7 +59,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: login
+  name: login-service
   namespace: argocd
 spec:
   destination:
@@ -107,7 +107,7 @@ spec:
   source:
     chart: grafana
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: '*'
+    targetRevision: 6.43.4
     helm:
       releaseName: grafana
       parameters:
@@ -147,7 +147,7 @@ spec:
   source:
     chart: prometheus
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: '*'
+    targetRevision: 15.18.0
     helm:
       releaseName: prometheus
       parameters:
@@ -173,7 +173,7 @@ spec:
   source:
     chart: loki-stack
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: '*'
+    targetRevision: 2.8.4
     helm:
       releaseName: loki
   syncPolicy:
@@ -194,7 +194,7 @@ spec:
   source:
     chart: external-dns
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: '*'
+    targetRevision: 6.11.3
     helm:
       releaseName: external-dns
       parameters:
