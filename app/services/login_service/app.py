@@ -3,14 +3,16 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/login/<username>/<password>', methods = ['GET'])
-def login(username, password):
-    result = {}
+def login_func(username, password):
     if username == 'admin' and password == 'admin':
-        result = {'SUCCESS': 'Login Successful',
+        return {'SUCCESS': 'Login Successful',
                 f'{username}': f'{password}'}
     else:
-        result = {'FAILED': 'Login Failed'}
+        return {'FAILED': 'Login Failed'}
+
+@app.route('/login/<username>/<password>', methods = ['GET'])
+def login(username, password):
+    result = login_func(username, password)
     return jsonify(result)
 
 if __name__ == '__main__':
