@@ -17,6 +17,17 @@ items:
   kind: Namespace
   metadata:
       name: external-dns
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+      name: cert-manager
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    labels:
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+    name: ingress-nginx
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -97,6 +108,44 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: app/k8s/cert-manager
+    repoURL: 'https://github.com/algorithm24/app.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-controller
+  namespace: argocd
+spec:
+  destination:
+    namespace: ingress-nginx
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: deploy/static/provider/cloud
+    repoURL: 'https://github.com/kubernetes/ingress-nginx'
+    targetRevision: d003aae913cc25f375deb74f898c7f3c65c06f05
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: grafana
   namespace: argocd
 spec:
@@ -127,7 +176,7 @@ spec:
               isDefault: true
             - name: Loki
               type: loki
-              url: http://loki.loki.svc.cluster.local
+              url: http://loki.loki.svc.cluster.local:3100
               access: proxy
   syncPolicy:
     automated:

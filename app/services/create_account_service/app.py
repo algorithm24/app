@@ -15,7 +15,7 @@ def create_user():
     data = request.get_json() or {}
     username = data.get('username')
     password = data.get('password')
-    result = create_user(username, password)
+    result = create_func(username, password)
     return jsonify(result)
 
 if __name__ == '__main__':
