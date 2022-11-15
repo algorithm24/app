@@ -1,5 +1,5 @@
 FROM python:3.9-alpine
-RUN apk update expat
+RUN apk update expat=2.5.0
 RUN apk upgrade expat
 WORKDIR /app
 COPY requirements.txt requirements.txt
