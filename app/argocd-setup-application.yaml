@@ -40,9 +40,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: app/k8s/create
+    chart: app/k8s/helm-create
     repoURL: 'https://github.com/algorithm24/app.git'
-    targetRevision: HEAD
+    targetRevision: *
+    helm:
+      releaseName: create
   syncPolicy:
     automated:
       prune: true
@@ -59,9 +61,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: app/k8s/item
+    chart: app/k8s/helm-item
     repoURL: 'https://github.com/algorithm24/app.git'
-    targetRevision: HEAD
+    targetRevision: *
+    helm:
+      releaseName: item
   syncPolicy:
     automated:
       prune: true
@@ -78,9 +82,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: app/k8s/login
+    chart: app/k8s/helm-login
     repoURL: 'https://github.com/algorithm24/app.git'
-    targetRevision: HEAD
+    targetRevision: *
+    helm:
+      releaseName: login
   syncPolicy:
     automated:
       prune: true
@@ -97,9 +103,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: app/k8s/gateway
+    chart: app/k8s/helm-gateway
     repoURL: 'https://github.com/algorithm24/app.git'
-    targetRevision: HEAD
+    targetRevision: *
+    helm:
+      releaseName: gateway
   syncPolicy:
     automated:
       prune: true
