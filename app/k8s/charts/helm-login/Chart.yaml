@@ -1,6 +1,0 @@
-apiVersion: v2
-name: login
-version: v0.0.1
-appVersion: v0.0.1
-type: application
-description: login application
